@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documenttt</title>
+  </head>
+  <body>
+    oi
+    <script>
+      // Nullish Coalescing Operator (Operador para lidar com valores nulos)
+
+      // 0, '', [], false, undefined, null => falsy (valores nao validos quando usa o operador ||)
+      //?? vai procurar valores que realmente não são validos, ex: null, undifined. ou valores nao tao significativos.
+
+      var idade = 0
+
+      document.body.innerText = 'sua idade é: ' + (idade ?? 'não informado')
+
+      //Objects
+      const user = {
+        name: 'rainara',
+        nickname: 'carlos',
+        age: 20,
+        address: {
+          city: 'São Paulo',
+          number: 482
+        }
+      }
+      //a expressão 'in' permite verificar se há uma informação dentro de um objeto
+      document.body.innerText = 'name' in user
+      //O Object retorna algo, com o JSON, troquei a informação para string, deixando em um melhor formato
+      //o entries retorna em vetores [], com a chave e o valor dela dentro.
+      document.body.innerText = JSON.stringify(Object.entries(user))
+
+      // DESESTRUTURAÇÃO => remover parte de um objeto para uma variavel a parte
+      // basta usar as chaves antes do sinal de igual, e consigo alterar o valor tambem
+      //const { address, age: idade } = user
+      // coloquei dentro de um objeto, para imprimir os dois
+      //document.body.innerText = JSON.stringify({ address, idade })
+
+      // usando o valor The flow
+      // adicionei um valor reserva caso nao tenha nada no nickname
+      const { address, age: idade, nickname = 'roberta' } = user
+
+      document.body.innerText = JSON.stringify({ address, idade, nickname })
+
+      // A DESESTRUTURAÇÃO PODE SER USADA EM TODO LUGAR QUE TENHA REFERENCIA P/ UM OBJETO
+
+      const dados = {
+        name: 'ana',
+        age: 23,
+        nickname: 'aninha',
+        address: {
+          city: Campinas,
+          number: 505
+        }
+      }
+      // coloquei chaves (poderia ser sem), para especificar o que eu queria pegar do objeto, nao sendo necessario mais o uso do "return dados.age"
+      function mostrarIdade({ age }) {
+        return age
+      }
+
+      document.body.innerText = mostrarIdade(age)
+
+      // REST OPERATOR
+      // imprime apenas o resto do codigo, o que estiver antes de rest, nao sera imprimido
+      const resto {name, ...rest} = dados
+      
+      document.body.innerText = JSON.stringify(rest)
+    </script>
+  </body>
+</html>
