@@ -64,11 +64,36 @@
 
       document.body.innerText = mostrarIdade(age)
 
-      // REST OPERATOR
+      // REST OPERATOR (desestruturação com rest)
       // imprime apenas o resto do codigo, o que estiver antes de rest, nao sera imprimido
       const resto {name, ...rest} = dados
-      
+
       document.body.innerText = JSON.stringify(rest)
+
+      // tambem conseguimos usar o rest nao só p/ objetos, como tambem para arrays
+      const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      // poderia fazer assim, mudando o índice para qualqueira buscar do array
+      // const first = array[0]
+      // document.body.innerText = JSON.stringify(first)
+
+      // com desestruturação
+      const [first, second, ...rest] = array
+
+      document.body.innerText = JSON.stringify(first, second, rest)
+
+      // caso queira pular algum numero do array, deixaria o espaço entre as virgulas vazio.
+      // const [first, , third ...rest] = array
+
+      // document.body.innerText = JSON.stringify(first, third, rest)
+
+      // UTILIZANDO A SHORT SINTAXE (sintaxe curta)
+      const name = 'rai';
+      const age = 20;
+      // vou colocar o nome da variavel const dentro do objeto, e o js vai reconhecer o valor dessa propriedade
+      const usuario = {
+        name,
+        age
+      }
     </script>
   </body>
 </html>
