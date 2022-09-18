@@ -89,11 +89,48 @@
       // UTILIZANDO A SHORT SINTAXE (sintaxe curta)
       const name = 'rai';
       const age = 20;
-      // vou colocar o nome da variavel const dentro do objeto, e o js vai reconhecer o valor dessa propriedade
+      // vou colocar o nome da variavel const dentro do objeto, e o js vai reconhecer o valor dessa propriedade, que vem da const
       const usuario = {
         name,
         age
       }
+
+      document.body.innerText = JSON.stringify(usuario)
+
+      //OPTIONAL CHAINING
+      const dados = {
+        name: 'Mariana',
+        age: 23,
+        nickname: 'Mariana',
+        address: {
+          city: Campinas,
+          number: 505
+          zip: {
+          code: 90923290
+          }
+          showFullAdress () {
+            return 'ok'
+          }
+        }
+      }
+      //quero verificar se existe um endereço (?), se existir mostrar a cidade. se não existir, mostrar 'não informado'. caso o codigo esteja comentado por exemplo, estaria lidando com erro. SEM USAR O OPTIONAL CHAINING
+      // document.body.innerText = dados.address ? user.adress.city : 'Não informado'
+
+      // COM O OPTIONAL CHAINING
+      // uso o ?. como um 'se', se existir endereço, mostrar o zip(caso nao encontre o address, nao vai mais acessar o restante), se o zip existir, mostrar o code. se nao existir, mostrar o 'não informado'
+      document.body.innerText = dados.adress?.zip?.code ?? 'Não informado'
+
+      // caso haja uma função dentro do objeto
+      // posso colocar ?. antes dos parenteses da dunção para nao haver erro. ou seja, so vai chamar essa função caso ela exista.
+      document.body.innerText = dados.adress?.showFullAdress?.()
+
+      //caso queira pegar um valor de uma variavel em outra variavel
+      const key = 'name'
+      //colocar entre colchetes que quero a variavel key, que tem o valor de nome da variavel dados. entao mostrara o nome Mariana
+      document.body.innerText = dados[key]
+
+      // MÉTODOS DE ARRAY
+
     </script>
   </body>
 </html>

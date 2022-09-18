@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main2</title>
+    <style>
+      body {
+        background: rgb(60, 60, 60);
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      //MÉTODOS: map, filter, every, some, find, findIndex, reduce (existem outros)
+
+      const array = [1, 2, 3, 4, 5]
+      //um dos metodos de percorrer indice de um array
+      // para cada índice do array, para cada índice atual adiconar mais um, percorrendo assim, todo o array
+      // for (const i of array) {
+      //   document.body.innerText += i
+      // }
+
+      // outro jeito utilizando o forEach
+      //o forEach executa uma dada dunção em um array, entao aqui, a cada iyem percorrido do array, ele vai adicionar mais um indice. percorrendo todo o array.
+
+      // utilizei uma arrow function {} que é uma sintaxe mais curta
+      // array.forEach(item => {
+      //   document.body.innerText += item
+      // })
+
+      //UTIIZANDO O MAP
+
+      // com o map eu consigo ter um retorno de dentro do meu metodo, para algum elemento por fora desse map consiga obter informações de dentro dele.
+
+      // const novoArray = array.map(item => {
+      //   return item * 2
+      // })
+      // document.body.innerText = JSON.stringify(novoArray)
+
+      // so uso o map quando quero transformar/alterar o meu array em outra informação, porem em outro array.
+      // o MAP sempre vai retornar o vetor (array) do tamanho do vetor original, o mesmo tanto de itens. não consigo com o map fazer qualquer tipo de filtro, exclusao.
+
+      //fiz uma condicional dentro do map
+      // const novoArray = array.map(item => {
+      //   // se o módulo em 2 for par (0) ele vai multiplicar os numeros pares por 10.
+      //   if (item % 2 === 0) {
+      //     return item * 10
+      //   }
+      //   //os que nao forem par, continuarao com o mesmo valor
+      //   return item
+      // })
+
+      // document.body.innerText = JSON.stringify(novoArray)
+
+      //MÉTODOS: map, filter, every, some, find, findIndex, reduce (existem outros)
+
+      //FILTER (filtra). ex: quero buscar uma seleção de campos de um array, porem, diferente do map, ele apenas filtra, nao altera nada do array.
+
+      //quero que mostre apenas os itens que o módulo de 2 seja igual a 0 (par), ou seja, so vai mostrar os numeros pares do array.
+      // const novoArray = array.filter(item => item % 2 === 0)
+
+      // document.body.innerText = JSON.stringify(novoArray)
+
+      //ao colocar ! na frente, quero apenas numeros primos;
+      //       const novoArray = array
+      //       //vai filtrar todo meu array, e os que forem diferente de par, no caso ímpar, sera mostrado;
+      //         .filter(item => item % 2 !== 0)
+      // //logo após, o map vai pegar todos os itens ja filtrados(meu novo array so com numeros ímpares) e multiplicará por 10.
+      //         .map(item => item * 10)
+
+      //       document.body.innerText = JSON.stringify(novoArray)
+
+      // MODULO EVERY. => vai retornar booleanos, true or false.
+      //ele vai retornar um true caso todos os itens Every satisfazem a uma condição.
+
+      //array dentro de uma variavel, o every vai pegar o item, analisar o tipo do item e ver se sao todos numeros. se fim, retorna true, se nao, retorna false
+
+      // const todosSaoNumeros = array.every(item => typeof item === 'number')
+
+      //tambem poderia ser assim:
+      //const todosSaoNumeros = array.every(item => {
+      // return typeof item === 'number'
+      //})
+      // document.body.innerText = JSON.stringify(todosSaoNumeros)
+
+      //  SOME
+      //diferente do every, ele verifica se pelo menos um item satisfaz uma condição.
+
+      // const peloMenosUmItem = array.some(item => {
+      //   //avalie o tipo do item e se tem algum diferente de number, me retorna true.
+      //   return typeof item !== 'number'
+      // })
+
+      // document.body.innerText = JSON.stringify(peloMenosUmItem)
+
+      // FIND
+      //o find vai percorrer todo o array, e mostrar o primeiro resultado que satisfaça a condição colocada. aqui, ele vai encontrar o item que o mode de 2 seja 0(par)
+      //const par = array.find(item => item % 2 === 0)
+
+      // document.body.innerText = JSON.stringify(par)
+
+      // FIND INDEX => mesma coisa do find, porem ele vai retornar o índice que se encontra o valor que eu pedi.
+
+      //const par = array.findIndex(item => item % 2 === 0)
+
+      // REDUCE => muito usado para pegar um array e criar uma nova estrutura(algo novo) de dados com base nesse array.
+      // pode ser usado para criar um objeto, um array, muitas coisas.
+      //o primeiro parametro dele é uma função. o segundo é como "qual o valor inicial dessa nova estrutura de dados que quero criar a partir do array"
+      //na função vao duas infos, o objeto que estou criando, e cada informação do array. (acc: acumulator)
+      // const soma = array.reduce((acc, item) => {
+
+      //aqui apenas para mostrar na tela que, ele percorreria todo meu array e mostraria uma soma q iria acumular aos poucos.
+      // document.body.innerText += acc + ',' + item + '--'
+
+      // return acc + item
+      //iniciando a soma a partir do 0, se fosse obj seria {} (mesmo q vazio) e etc
+      // }, 0)
+      // document.body.innerText = JSON.stringify(soma)
+
+      // TENPLATE LITERALS (pesquisar sobre tag tenplates depois)
+
+      // const name = 'Rainara'
+      // //pesquiso nome, se tiver mostrar ele, se nao tiver, mostrar 'nao informado'
+      // const message = `Bem vinda, ${name ? name : 'Não informado'}`
+
+      // PROMISE
+      // criei uma função com dois parametros, dentro dela está:
+      // const somaDoisNumeros = (a, b) => {
+      //   //vai me retornar uma promessa, resolvido ou rejeitado
+      //   return new Promise((resolve, reject) => {
+      //     //quando o setTimeout executar, ele vai 'resolver' o que foi pedido
+      //     setTimeout(() => {
+      //       //a soma dos dois numeros passados como parametro, mas se usasse o reject ia ser tudo negado, rejeitado.
+      //       reject(a + b)
+      //       //tudo isso em 2 segundos
+      //     }, 2000)
+      //   })
+      // }
+      // //chamei a função e passei os parametros, o .then vai buscar o valor da soma e mostrar dentro do body o valor. Tudo em 2 seg.
+      // somaDoisNumeros(1, 4)
+      //   .then(soma => {
+      //     document.body.innerText = soma
+      //   })
+      //   //o .catch é chamado para resolver erros, nesse caso, ele tratou o retorno de erro da promise
+      //   .catch(err => {
+      //     console.log(err)
+      //   })
+
+      // outro ex:
+      //Fetch me permite pegar informaçoes de outro servidor, nesse caso, o github
+
+      // fetch('https://api.github.com/users/diego3g')
+      //   //aqui ele fez a mesma coisa do cod abaixo, porem sem o efeito cascata, que seria o json e then juntos, entao aqui vai retornar ja em formato jason.
+      //   .then(response => {
+      //     return response.json()
+      //   })
+      //   .then(body => {
+      //     console.log(body)
+      //   })
+      //   //ele vai buscar uma resposta
+      //   // .then(response => {
+      //   //   //a resposta vai ser em forma de objeto, pois utilizei o json. o then vai procurar dentro da pagina e
+      //   //   response.json().then(body => {
+      //   //     //vai imprimir em forma de objeto a resposta
+      //   //     console.log(body)
+      //   //   })
+      //   // })
+      //   .catch(err => {
+      //     console.log(err)
+      //   })
+
+      //   //finally => vai ser executada independente se der erro ou nao, no final, quando a promise terminar de executar
+      //   .finally(() => {
+      //     console.log('and this is the end?')
+      //   })
+
+      //OUTRO JEITO
+      //async = quer dizer que ela é uma function assincrona, que tem algo que demora dentro dela, leva um tempinho.
+      // async function buscandoCodigoGit() {
+      //   //var resposta vai aguardar algo executar(await), que é o fetch
+      //   const response = await fetch('https://api.github.com/users/diego3g')
+      //   //quando a primeira linha de cod for executada, ele vai me retornr em objeto com o json
+      //   const body = await response.json()
+      //   //e entao vai retornar o body
+      //   console.log(body)
+      // }
+
+      // buscandoCodigoGit()
+      //toda função async vira uma promise automaticamente
+      // async function buscandoCodigoGit() {
+      //   //é um bloco que contem uma ou mais declarações, sendo necessario o cath ou finally ser uma delas(pode ser os dois)
+      //   try {
+      //     const response = await fetch('https://api.github.com/users/diego3g')
+      //     const body = await response.json()
+      //     console.log(body) //return aqui
+      //   } catch (err) {
+      //     console.log(err)
+      //   } finally {
+      //     console.log('and this is the end?')
+      //   }
+      // }
+      // //para buscar algo em uma funçao que é promise uso o then
+      // //caso eu queira retornar o nome da pessoa, faria isso e coloaria o return onde esta marcado
+
+      // buscandoCodigoGit().then(name => {
+      //   console.log(name)
+      // })
+    </script>
+  </body>
+</html>
